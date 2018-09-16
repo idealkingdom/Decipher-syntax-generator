@@ -114,51 +114,51 @@ function questionType(type) {
     	    		break
     	case 'radioR':
     	    		codeMirror.replaceSelection('<radio \n   label=""\n   optional="0"\n   type="rating">\n'+
-    	    			((/<title>/.test(textsplit.join('\n'))) ? textsplit[0]+
-    	    			'\n<comment>Select one</comment>\n'+textsplit.slice(1).join("\n") : 
-    	    			'<title>'+textsplit[0]+'</title>\n<comment>Select one</comment>\n'+textsplit.join("\n"))+
+    	    			(textsplit[0].search(/<row/) > -1 ? '<title></title>'+
+    	    			'\n<comment>Select one</comment>\n'+textsplit.join("\n") : 
+    	    			'<title>'+textsplit[0]+'</title>\n<comment>Select one</comment>\n'+textsplit.slice(1).join("\n"))+
     	    			'</radio>');
     	    		break
     	case 'checkbox':
     	    		codeMirror.replaceSelection('<checkbox \n   label=""\n   atleast="1">\n'+
-    	    			((/<title>/.test(textsplit.join('\n'))) ? textsplit[0]+
-    	    			'\n<comment>Select all that apply</comment>\n'+textsplit.slice(1).join("\n") : 
-    	    			'<title>'+textsplit[0]+'</title>\n<comment>Select all that apply</comment>\n'+textsplit.slice(1).join("\n"))+
+    	    			(textsplit[0].search(/<row/) > -1 ? '<title></title>'+
+    	    			'\n<comment>Select one</comment>\n'+textsplit.join("\n") : 
+    	    			'<title>'+textsplit[0]+'</title>\n<comment>Select one</comment>\n'+textsplit.slice(1).join("\n"))+
     	    			'</checkbox>');
     	    		break
     	case 'select':
     	    		codeMirror.replaceSelection('<select \n   label=""\n   optional="0">\n'+
-    	    			((/<title>/.test(textsplit.join('\n'))) ? textsplit[0]+
-    	    			'\n<comment>Select one</comment>\n'+textsplit.slice(1).join("\n") : 
-    	    			'<title>'+textsplit[0]+'</title>\n<comment>Select all that apply</comment>\n'+textsplit.slice(1).join("\n"))+
+    	    			(textsplit[0].search(/<row/) > -1 ? '<title></title>'+
+    	    			'\n<comment>Select one</comment>\n'+textsplit.join("\n") : 
+    	    			'<title>'+textsplit[0]+'</title>\n<comment>Select one</comment>\n'+textsplit.slice(1).join("\n"))+
     	    			'</select>');
     	    		break
     	case 'selectR':
     	    		codeMirror.replaceSelection('<select \n   label=""\n   optional="0"\n type="rating">\n'+
-    	    			((/<title>/.test(textsplit.join('\n'))) ? textsplit[0]+
-    	    			'\n<comment>Select one</comment>\n'+textsplit.slice(1).join("\n") : 
-    	    			'<title>'+textsplit[0]+'</title>\n<comment>Select all that apply</comment>\n'+textsplit.slice(1).join("\n"))+
+    	    			(textsplit[0].search(/<row/) > -1 ? '<title></title>'+
+    	    			'\n<comment>Select one</comment>\n'+textsplit.join("\n") : 
+    	    			'<title>'+textsplit[0]+'</title>\n<comment>Select one</comment>\n'+textsplit.slice(1).join("\n"))+
     	    			'</select>');
     	    		break
     	case 'number':
     	    		codeMirror.replaceSelection('<number \n   label=""\n  size="9"\n optional="0"\n verify="range(1,120)">\n'+
-    	    			((/<title>/.test(textsplit.join('\n'))) ? textsplit[0]+
-    	    			'\n<comment>Select all that apply</comment>\n'+textsplit.slice(1).join("\n") : 
-    	    			'<title>'+textsplit[0]+'</title>\n<comment>Select all that apply</comment>\n'+textsplit.slice(1).join("\n"))+
+    	    			(textsplit[0].search(/<row/) > -1 ? '<title></title>'+
+    	    			'\n<comment>Select one</comment>\n'+textsplit.join("\n") : 
+    	    			'<title>'+textsplit[0]+'</title>\n<comment>Select one</comment>\n'+textsplit.slice(1).join("\n"))+
     	    			'</number>');
     	    		break
     	case 'text':
     	    		codeMirror.replaceSelection('<text \n   label=""\n  size="40"\n optional="0">\n'+
-    	    			((/<title>/.test(textsplit.join('\n'))) ? textsplit[0]+
-    	    			'\n<comment>Select all that apply</comment>\n'+textsplit.slice(1).join("\n") : 
-    	    			'<title>'+textsplit[0]+'</title>\n<comment>Select all that apply</comment>\n'+textsplit.slice(1).join("\n"))+
+    	    			(textsplit[0].search(/<row/) > -1 ? '<title></title>'+
+    	    			'\n<comment>Select one</comment>\n'+textsplit.join("\n") : 
+    	    			'<title>'+textsplit[0]+'</title>\n<comment>Select one</comment>\n'+textsplit.slice(1).join("\n"))+
     	    			' </text>');
     	    		break
     	case 'textarea':
     	    		codeMirror.replaceSelection('<textarea \n   label=""\n  optional="0">\n'+
-    	    			((/<title>/.test(textsplit.join('\n'))) ? textsplit[0]+
-    	    			'\n<comment>Select all that apply</comment>\n'+textsplit.slice(1).join("\n") : 
-    	    			'<title>'+textsplit[0]+'</title>\n<comment>Select all that apply</comment>\n'+textsplit.slice(1).join("\n"))+
+    	    			(textsplit[0].search(/<row/) > -1 ? '<title></title>'+
+    	    			'\n<comment>Select one</comment>\n'+textsplit.join("\n") : 
+    	    			'<title>'+textsplit[0]+'</title>\n<comment>Select one</comment>\n'+textsplit.slice(1).join("\n"))+
     	    			'</textarea>');
     	    		break
     	case 'comment':
