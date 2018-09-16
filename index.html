@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<title>Decipher Tools!</title>
+		<link rel="stylesheet" type="text/css" href="res/Css/bootstrap.min.superhero.css">
+		<link rel="stylesheet" type="text/css" href="res/Css/index.style.css">
+		<link rel="stylesheet" type="text/css" href="res/codemirror-5.40.0/lib/codemirror.css">
+		<link rel="stylesheet" href="res/codemirror-5.40.0/theme/monokai.css">
+	</head>
+	<body>
+		<nav class="navbar navbar-lg navbar-dark bg-dark navbar-fixed-top">
+			<div class="navbar-collapse" id="navbarColor02">
+				<ul class="navbar-nav">
+					<div class="btn-group" role="group" style="margin-left: 2%;">
+						<li class="nav-item dropdown">
+							<a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Row</a>
+							<div class="dropdown-menu" x-placement="bottom-start" style="position: absolute; will-change: transform; top: 0px; left: 0px; transform: translate3d(0px, 40px, 0px);">
+								<a class="dropdown-item" href="#" onclick="elementType('row')">Clean</a>
+								<a class="dropdown-item" href="#" onclick="elementType('rowV')">Clean w/ Value</a>
+								<a class="dropdown-item" href="#" onclick="elementType('rowR')">Reverse label</a>
+								<a class="dropdown-item" href="#" onclick="elementType('rowRV')">Reverse w/ Value</a>
+								<a class="dropdown-item" href="#" onclick="elementType('rowMatchv')">Label Match Values</a>
+							</div>
+						</li>
+						<li class="nav-item dropdown" style="margin-left: 4%">
+							<a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Column</a>
+							<div class="dropdown-menu" x-placement="bottom-start" style="position: absolute; will-change: transform; top: 0px; left: 0px; transform: translate3d(0px, 40px, 0px);">
+								<a class="dropdown-item" href="#" onclick="elementType('col')">Clean</a>
+								<a class="dropdown-item" href="#" onclick="elementType('colV')">Clean w/ value</a>
+								<a class="dropdown-item" href="#" onclick="elementType('colR')">Reverse label</a>
+								<a class="dropdown-item" href="#" onclick="elementType('colRV')">Reverse w/ Value</a>
+								<a class="dropdown-item" href="#" onclick="elementType('colMatchv')">Label Match Values</a>
+							</div>
+						</li>
+						<li class="nav-item dropdown" style="margin-left: 4%">
+							<a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Choice</a>
+							<div class="dropdown-menu" x-placement="bottom-start" style="position: absolute; will-change: transform; top: 0px; left: 0px; transform: translate3d(0px, 40px, 0px);">
+								<a class="dropdown-item" href="#" onclick="elementType('choice')">Clean</a>
+								<a class="dropdown-item" href="#" onclick="elementType('choiceC')">Clean w/ Value</a>
+								<a class="dropdown-item" href="#" onclick="elementType('choiceR')">Reverse label</a>
+								<a class="dropdown-item" href="#" onclick="elementType('choiceRV')">Reverse w/ Value</a>
+								<a class="dropdown-item" href="#" onclick="elementType('choiceMatchv')">Label Match Values</a>
+							</div>
+						</li>
+						<li class="nav-item dropdown" style="margin-left: 4%">
+							<a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Group</a>
+							<div class="dropdown-menu" x-placement="bottom-start" style="position: absolute; will-change: transform; top: 0px; left: 0px; transform: translate3d(0px, 40px, 0px);">
+								<a class="dropdown-item" href="#" onclick="elementType('group')">Clean</a>
+								<a class="dropdown-item" href="#" onclick="elementType('groupV')">Clean w/ Value</a>
+								<a class="dropdown-item" href="#" onclick="elementType('groupR')">Reverse label</a>
+								<a class="dropdown-item" href="#" onclick="elementType('groupRV')">Reverse w/ Value</a>
+								<a class="dropdown-item" href="#" onclick="elementType('groupMatchv')">Label Match Group</a>
+							</div>
+						</li>
+						<li class="nav-item dropdown" style="margin-left: 4%">
+							<a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Question Types</a>
+							<div class="dropdown-menu" x-placement="bottom-start" style="position: absolute; will-change: transform; top: 0px; left: 0px; transform: translate3d(0px, 40px, 0px);">
+								<a class="dropdown-item" href="#" onclick="questionType('radio')">Radio</a>
+								<a class="dropdown-item" href="#" onclick="questionType('radioR')">Radio Rating</a>
+								<a class="dropdown-item" href="#" onclick="questionType('checkbox')">Checkbox</a>
+								<a class="dropdown-item" href="#" onclick="questionType('select')">Select</a>
+								<a class="dropdown-item" href="#" onclick="questionType('number')">Number</a>
+								<a class="dropdown-item" href="#" onclick="questionType('text')">Text</a>
+								<a class="dropdown-item" href="#" onclick="questionType('textarea')">Textarea</a>
+								<a class="dropdown-item" href="#" onclick="questionType('comment')">HTML tag/Comment</a>
+							</div>
+						</li>
+					</div>
+				</ul>
+			</div>
+		</nav>
+		<div class="main-div jumbotron">
+			<div class="kafoy">
+				<div class="column "><textarea class="dataText" id="dataText"></textarea></div>
+			</div>
+		</div>
+	</div>
+	<!-- Js Libraries -->
+	<script type="text/javascript" src="res/Js/jquery-3.3.1.js"></script>
+	<script type="text/javascript" src="res/Js/bootstrap.min.js"></script>
+	<script src="res/codemirror-5.40.0/lib/codemirror.js"></script>
+	<script type="text/javascript" src="res/Js/codesyntax.js"></script>
+	<script src="res/codemirror-5.40.0/mode/xml/xml.js"></script>
+	<script type="text/javascript" src="res/Js/mainFunctionality.js"></script>
+</body>
+</html>
