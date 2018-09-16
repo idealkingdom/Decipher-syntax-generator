@@ -105,9 +105,8 @@ function questionType(type) {
     var textsplit = codeMirror.getSelection().split('\n');
     switch(type){
     	case 'radio':
+    				console.log(textsplit[0].search(/<row/))
     	    		codeMirror.replaceSelection('<radio \n   label=""\n   optional="0">\n'+
-    	    			((/<title>/.test(textsplit.join('\n'))) ? textsplit[0]+
-    	    			'\n<comment>Select one</comment>\n'+textsplit.slice(1).join("\n") : 
     	    			'<title>'+textsplit[0]+'</title>\n<comment>Select one</comment>\n'+textsplit.slice(1).join("\n"))+
     	    			'</radio>');
     	    		break
