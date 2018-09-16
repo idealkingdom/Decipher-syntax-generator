@@ -105,7 +105,7 @@ function questionType(type) {
     var textsplit = codeMirror.getSelection().split('\n');
     switch(type){
     	case 'radio':
-    				console.log(textsplit[0].search(/<row/))
+    				console.log($('.openFile')[0].path)
     	    		codeMirror.replaceSelection('<radio \n   label=""\n   optional="0">\n'+
     	    			(textsplit[0].search(/<row/) > -1 ? '<title></title>'+
     	    			'\n<comment>Select one</comment>\n'+textsplit.join("\n") : 
@@ -166,4 +166,45 @@ function questionType(type) {
     	    			textsplit.join('\n').trim()+'\n </html>');
     	    		break
     }
+}
+var filename = ''
+
+function openFile(event) {
+	var file = event.target.files[0];
+	var reader = new FileReader();
+	console.log(file)
+	if (file.name.substr(-3) !='xml' && file.name.substr(-3) !='txt'){
+		alert("Wrong file uploaded!")
+		}
+	else{
+		    reader.onload = function(event){
+		codeMirror.setValue(event.target.result)
+	}
+
+	}
+	reader.readAsText(file);
+	filename = file.name
+}
+
+
+
+function makeFile(text) {
+		var textFile=null
+	    var data = new Blob([text], {type: 'text/plain'});
+    // If we are replacing a previously generated file we need to
+    // manually revoke the object URL to avoid memory leaks.
+    if (textFile !== null) {
+      window.URL.revokeObjectURL(textFile);
+    }
+    textFile = window.URL.createObjectURL(data);
+    return textFile;
+
+}
+
+function downloadText() {
+	console.log(codeMirror.getValue())
+    var link = document.getElementById('downloadtext');
+    link.href = makeFile(codeMirror.getValue());
+    downloadtext.click();
+
 }
