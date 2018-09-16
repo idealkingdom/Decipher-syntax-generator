@@ -122,8 +122,8 @@ function questionType(type) {
     	case 'checkbox':
     	    		codeMirror.replaceSelection('<checkbox \n   label=""\n   atleast="1">\n'+
     	    			(textsplit[0].search(/<row/) > -1 ? '<title></title>'+
-    	    			'\n<comment>Select one</comment>\n'+textsplit.join("\n") : 
-    	    			'<title>'+textsplit[0]+'</title>\n<comment>Select one</comment>\n'+textsplit.slice(1).join("\n"))+
+    	    			'\n<comment>Select all that apply</comment>\n'+textsplit.join("\n") : 
+    	    			'<title>'+textsplit[0]+'</title>\n<comment>Select all that apply</comment>\n'+textsplit.slice(1).join("\n"))+
     	    			'</checkbox>');
     	    		break
     	case 'select':
@@ -143,22 +143,22 @@ function questionType(type) {
     	case 'number':
     	    		codeMirror.replaceSelection('<number \n   label=""\n  size="9"\n optional="0"\n verify="range(1,120)">\n'+
     	    			(textsplit[0].search(/<row/) > -1 ? '<title></title>'+
-    	    			'\n<comment>Select one</comment>\n'+textsplit.join("\n") : 
-    	    			'<title>'+textsplit[0]+'</title>\n<comment>Select one</comment>\n'+textsplit.slice(1).join("\n"))+
+    	    			'\n<comment>Please enter a whole number</comment>\n'+textsplit.join("\n") : 
+    	    			'<title>'+textsplit[0]+'</title>\n<comment>Please enter a whole number</comment>\n'+textsplit.slice(1).join("\n"))+
     	    			'</number>');
     	    		break
     	case 'text':
     	    		codeMirror.replaceSelection('<text \n   label=""\n  size="40"\n optional="0">\n'+
     	    			(textsplit[0].search(/<row/) > -1 ? '<title></title>'+
     	    			'\n<comment>Select one</comment>\n'+textsplit.join("\n") : 
-    	    			'<title>'+textsplit[0]+'</title>\n<comment>Select one</comment>\n'+textsplit.slice(1).join("\n"))+
+    	    			'<title>'+textsplit[0]+'</title>\n<comment>Please be as specific as possible</comment>\n'+textsplit.slice(1).join("\n"))+
     	    			' </text>');
     	    		break
     	case 'textarea':
     	    		codeMirror.replaceSelection('<textarea \n   label=""\n  optional="0">\n'+
     	    			(textsplit[0].search(/<row/) > -1 ? '<title></title>'+
     	    			'\n<comment>Select one</comment>\n'+textsplit.join("\n") : 
-    	    			'<title>'+textsplit[0]+'</title>\n<comment>Select one</comment>\n'+textsplit.slice(1).join("\n"))+
+    	    			'<title>'+textsplit[0]+'</title>\n<comment>Please be as specific as possible</comment>\n'+textsplit.slice(1).join("\n"))+
     	    			'</textarea>');
     	    		break
     	case 'comment':
