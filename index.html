@@ -8,6 +8,7 @@
 		<link rel="stylesheet" type="text/css" href="res/Css/bootstrap.min.superhero.css">
 		<link rel="stylesheet" type="text/css" href="res/Css/index.style.css">
 		<link rel="stylesheet" type="text/css" href="res/codemirror-5.40.0/lib/codemirror.css">
+		<link rel="stylesheet" href="res/codemirror-5.40.0/addon/dialog/dialog.css">
 		<link rel="stylesheet" href="res/codemirror-5.40.0/theme/monokai.css">
 		<script type="text/javascript" src="res/Js/jquery-3.3.1.js"></script>
 		<script src="res/codemirror-5.40.0/lib/codemirror.js"></script>
@@ -22,6 +23,13 @@
 		<script src="res/codemirror-5.40.0/addon/edit/trailingspace.js"></script>
 		<script src="res/codemirror-5.40.0/addon/edit/matchtags.js"></script>
 		<script src="res/codemirror-5.40.0/addon/edit/closebrackets.js"></script>
+		<script src="res/codemirror-5.40.0/addon/scroll/annotatescrollbar.js"></script>
+		<script src="res/codemirror-5.40.0/addon/search/matchesonscrollbar.js"></script>
+		<script src="res/codemirror-5.40.0/addon/dialog/dialog.js"></script>
+		<script src="res/codemirror-5.40.0/addon/search/jump-to-line.js"></script>
+		<script src="res/codemirror-5.40.0/addon/search/search.js"></script>
+		<script src="res/codemirror-5.40.0/addon/search/match-highlighter.js"></script>
+		<script src="res/codemirror-5.40.0/addon/search/searchcursor.js"></script>
 	</head>
 	<body>
 		<nav class="navbar navbar-lg navbar-dark bg-dark navbar-fixed-top">
@@ -167,7 +175,7 @@ CodeMirror.registerHelper('hint', 'dictionaryHint', function(editor) {
 		matchBrackets: true,
 		showTrailingSpace:true,
 		autoCloseBrackets:true,
-		extraKeys:{"Ctrl-Space":"toMatchingTag"},
+		extraKeys:{"Ctrl-Space":"toMatchingTag","Ctrl-Alt-F": "findPersistent"},
         theme: 'monokai',
         value: document.documentElement.innerHTML
       });
