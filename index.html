@@ -4,10 +4,19 @@
 		<meta charset="utf-8">
 		<meta http-equiv="X-UA-Compatible" content="IE=edge">
 		<title>Decipher Tools!</title>
+		<link rel="stylesheet" href="res/codemirror-5.40.0/addon/hint/show-hint.css">
 		<link rel="stylesheet" type="text/css" href="res/Css/bootstrap.min.superhero.css">
 		<link rel="stylesheet" type="text/css" href="res/Css/index.style.css">
 		<link rel="stylesheet" type="text/css" href="res/codemirror-5.40.0/lib/codemirror.css">
 		<link rel="stylesheet" href="res/codemirror-5.40.0/theme/monokai.css">
+		<script type="text/javascript" src="res/Js/jquery-3.3.1.js"></script>
+		<script src="res/codemirror-5.40.0/lib/codemirror.js"></script>
+		<script src="res/codemirror-5.40.0/mode/xml/xml.js"></script>
+				<script src="res/codemirror-5.40.0/mode/htmlmixed/htmlmixed.js"></script>
+		<script src="res/codemirror-5.40.0/addon/hint/show-hint.js"></script>
+		<script src="res/codemirror-5.40.0/addon/hint/xml-hint.js"></script>
+		<script src="res/codemirror-5.40.0/addon/hint/html-hint.js"></script>
+		<script src="res/codemirror-5.40.0/addon/hint/javascript-hint.js"></script>
 	</head>
 	<body>
 		<nav class="navbar navbar-lg navbar-dark bg-dark navbar-fixed-top">
@@ -75,31 +84,104 @@
 								<a download="survey.xml" id="downloadtext" style="display: none">Download</a>								
 							</div>
 						</li>
-					</div>
+      	
+
+<button type="button" style="margin-left: 10%;" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#settingsmodal">Settings</button>
 				</ul>
 			</div>
 		</nav>
+
+
 		<div class="main-div jumbotron">
-			<div class="kafoy">
-				<div class="column "><textarea class="dataText" id="dataText"></textarea></div>
+				<div class="column "><textarea id="dataText" name="dataText"></textarea></div>
 			</div>
 		</div>
 	</div>
-	<!-- Js Libraries -->
-	<script type="text/javascript" src="res/Js/jquery-3.3.1.js"></script>
-	<script type="text/javascript" src="res/Js/bootstrap.min.js"></script>
-	<script src="res/codemirror-5.40.0/lib/codemirror.js"></script>
-	<script type="text/javascript" src="res/Js/codesyntax.js"></script>
-	<script type="text/javascript" src="res/Js/streamsaver.js"></script>
-	<script src="res/codemirror-5.40.0/mode/xml/xml.js"></script>
-	<script type="text/javascript" src="res/Js/mainFunctionality.js"></script>
-<script>
-	// it also support commonJs and amd
-	import { createWriteStream, supported, version } from 'StreamSaver'
-	const { createWriteStream, supported, version } = require('StreamSaver')
-	const { createWriteStream, supported, version } = window.streamSaver
-	alert( supported )
+<!-- Modal -->
+
+<div class="modal" id="settingsmodal">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Settings</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+  <div class="form-group">
+    <div class="custom-control custom-checkbox">
+      <input type="checkbox" class="custom-control-input" id="autocompletesett" checked="">
+      <label class="custom-control-label" for="autocompletesett">Auto Complete</label>
+    </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-primary" data-dismiss="modal" onclick="settingsEnableAutocomplete(editor)">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+</div>
+<script type="text/javascript">
+var hintlist = ["row","rows","col","cols","group","groups","value","values","alt","adim","altlabel","averages","below","type","rating","order","rightOf","blankValue","choice","choiceCond","rowCond","colCond","choiceShuffle","rowShuffle","colShuffle","blankIfZero","blankValue","colLegend","colLegendRows","colShuffle","cond","comment","dataSource","dataRef","exec","grouping","horizontalPercentages","keepWith","label","rowShuffle","noTranslate","open","optional","pii","ratingDirection","rowGroups","rowLegend","shuffle","shuffleBy","sort","sortChoices","sortCols","sortRows","style","title","type","uses","virtual","hidden","where"]
+
+var filtered = $.unique(hintlist.sort()).sort()
+console.log(filtered);
+
+CodeMirror.registerHelper('hint', 'dictionaryHint', function(editor) {
+    var cur = editor.getCursor();
+    var curLine = editor.getLine(cur.line);
+    var start = cur.ch;
+    var end = start;
+    while (end < curLine.length && /[\w$]/.test(curLine.charAt(end))) ++end;
+    while (start && /[\w$]/.test(curLine.charAt(start - 1))) --start;
+    var curWord = start !== end && curLine.slice(start, end);
+    var regex = new RegExp('^' + curWord, 'i');
+    return {
+        list: (!curWord ? [] : hintlist.filter(function(item) {
+            return item.match(regex);
+        })).sort(),
+        from: CodeMirror.Pos(cur.line, start),
+        to: CodeMirror.Pos(cur.line, end)
+    }
+});
+ var editor = CodeMirror.fromTextArea(document.getElementById("dataText"), {
+        lineNumbers: true,
+        mode: "text/html",
+        matchClosing: true,
+		indentWithTabs: true,
+		matchBrackets: true,
+        theme: 'monokai',
+        value: document.documentElement.innerHTML
+      });
+	CodeMirror.commands.autocomplete = function (cm) {
+    CodeMirror.showHint(cm, CodeMirror.hint.dictionaryHint);}
+      window.onload = function() {
+       settingsEnableAutocomplete(editor); 
+       editor.setSize(null,616);
+
+      };
+
+function settingsEnableAutocomplete(editor) {
+	console.log($('#autocompletesett').attr('checked'));
+	if($('#autocompletesett').attr('checked') == 'checked'){
+ 	  CodeMirror.on(editor,"keyup", function(event,value) {
+  		if(value.code != 'Backspace' && value.code != 'Delete' && value.code !='ArrowDown'  && value.code !='ArrowUp'  && value.code !='ArrowLeft'  && value.code !='ArrowRight' && value.ctrlKey!=true){
+  			console.log(value)
+  			CodeMirror.showHint(editor, CodeMirror.hint.dictionaryHint)
+  		}
+  	else{
+  		CodeMirror.off("keyup")
+  	}
+  });}
+ }
+
 </script>
+
+	<!-- Js Libraries -->
+	<script type="text/javascript" src="res/Js/bootstrap.min.js"></script>
+	<script type="text/javascript" src="res/Js/mainFunctionality.js"></script>
+
 
 </body>
 </html>
