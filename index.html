@@ -11,7 +11,12 @@
 		<link rel="stylesheet" href="res/codemirror-5.40.0/theme/monokai.css">
 		<script type="text/javascript" src="res/Js/jquery-3.3.1.js"></script>
 		<script src="res/codemirror-5.40.0/lib/codemirror.js"></script>
-
+		<script src="res/codemirror-5.40.0/mode/xml/xml.js"></script>
+				<script src="res/codemirror-5.40.0/mode/htmlmixed/htmlmixed.js"></script>
+		<script src="res/codemirror-5.40.0/addon/hint/modshow-hint.js"></script>
+		<script src="res/codemirror-5.40.0/addon/hint/xml-hint.js"></script>
+		<script src="res/codemirror-5.40.0/addon/hint/html-hint.js"></script>
+		<script src="res/codemirror-5.40.0/addon/hint/javascript-hint.js"></script>
 	</head>
 	<body>
 		<nav class="navbar navbar-lg navbar-dark bg-dark navbar-fixed-top">
@@ -107,7 +112,7 @@
   <div class="form-group">
     <div class="custom-control custom-checkbox">
       <input type="checkbox" class="custom-control-input" id="autocompletesett" checked="">
-      <label class="custom-control-label" for="autocompletesett">Auto Complete</label>
+      <label class="custom-control-label" for="autocompletesett">Hint</label>
     </div>
       </div>
       <div class="modal-footer">
@@ -146,7 +151,6 @@ CodeMirror.registerHelper('hint', 'dictionaryHint', function(editor) {
         matchClosing: true,
 		indentWithTabs: true,
 		matchBrackets: true,
-		matchTags: {bothTags: true},
         theme: 'monokai',
         value: document.documentElement.innerHTML
       });
@@ -159,31 +163,26 @@ CodeMirror.registerHelper('hint', 'dictionaryHint', function(editor) {
       };
 
 function settingsEnableAutocomplete(editor) {
-	console.log($('input[type=checkbox]').prop('checked'));
-	
+	console.log($('#autocompletesett').prop('checked'));
  	  CodeMirror.on(editor,"keyup", function(event,value) {
-if($('input[type=checkbox]').prop('checked') == true){
+ 	 if($('#autocompletesett').prop('checked') == true){
   		if(value.code != 'Backspace' && value.code != 'Delete' && value.code !='ArrowDown'  && value.code !='ArrowUp'  && value.code !='ArrowLeft'  && value.code !='ArrowRight' && value.ctrlKey!=true){
+  			console.log(value)
   			CodeMirror.showHint(editor, CodeMirror.hint.dictionaryHint)
   		}
- 	}
-  });
+  	else{
+  		CodeMirror.off("keyup")
 
+  	}
+  }
+  });
  }
 
 </script>
 
 	<!-- Js Libraries -->
 	<script type="text/javascript" src="res/Js/bootstrap.min.js"></script>
-	<script src="res/codemirror-5.40.0/mode/xml/xml.js"></script>
-	<script src="res/codemirror-5.40.0/mode/htmlmixed/htmlmixed.js"></script>
-	<script src="res/codemirror-5.40.0/addon/hint/show-hint.js"></script>
-	<script src="res/codemirror-5.40.0/addon/hint/xml-hint.js"></script>
-	<script src="res/codemirror-5.40.0/addon/hint/html-hint.js"></script>
-	<script src="res/codemirror-5.40.0/addon/hint/javascript-hint.js"></script>
 	<script type="text/javascript" src="res/Js/mainFunctionality.js"></script>
-	<script src="res/codemirror-5.40.0/addon/fold/xml-fold.js"></script>
-	<script src="res/codemirror-5.40.0/addon/edit/matchtags.js"></script>
 
 
 </body>
