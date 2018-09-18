@@ -170,7 +170,7 @@ function questionType(type) {
 
 function loopBlock(type) {
 
-
+ 
 var textsplit = editor.getSelection().split('\n');
 switch(type){
 	case 'loop':
