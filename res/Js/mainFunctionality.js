@@ -59,48 +59,48 @@ function elementType(kind) {
 				}
 
 }
-
+for (var j = 0; j < textsplit.length; j++) {
 	for (var i = textsplit.length - 1; i >= 0; i--) {
 		    	matchlabel.push(textsplit[i].trim().substring(0,textsplit[i].indexOf('.')).replace(/\s/g, ""))
     switch(kind){
 		case 'rowR':
 		    if (textsplit[i]!= '')
-				editor.replaceSelection('<row label="r'+[i+1]+'">'+textsplit[i].trim()+'</row>'+'\n');
+				editor.replaceSelection('<row label="r'+[i+1]+'">'+textsplit[j].trim()+'</row>'+'\n');
 				break
 		case 'rowRV':
 		    if (textsplit[i]!= '')
-				editor.replaceSelection('<row label="r'+[i+1]+'" value="'+[i+1]+'">'+textsplit[i].trim()+'</row>'+'\n');
+				editor.replaceSelection('<row label="r'+[i+1]+'" value="'+[i+1]+'">'+textsplit[j].trim()+'</row>'+'\n');
 				break
 		case 'colR':
 		    if (textsplit[i]!= '')
-				editor.replaceSelection('<col label="r'+[i+1]+'">'+textsplit[i].trim()+'</col>'+'\n');
+				editor.replaceSelection('<col label="r'+[i+1]+'">'+textsplit[j].trim()+'</col>'+'\n');
 				break
 		case 'colRV':
 		    if (textsplit[i]!= '')
-				editor.replaceSelection('<col label="r'+[i+1]+'" value="'+[i+1]+'">'+textsplit[i].trim()+'</col>'+'\n');
+				editor.replaceSelection('<col label="r'+[i+1]+'" value="'+[i+1]+'">'+textsplit[j].trim()+'</col>'+'\n');
 				break
 		case 'choiceR':
 		    if (textsplit[i]!= '')
-				editor.replaceSelection('<choice label="r'+[i+1]+'">'+textsplit[i].trim()+'</choice>'+'\n');
+				editor.replaceSelection('<choice label="r'+[i+1]+'">'+textsplit[j].trim()+'</choice>'+'\n');
 				break
 		case 'choiceRV':
 		    if (textsplit[i]!= '')
-				editor.replaceSelection('<choice label="r'+[i+1]+'" value="'+[i+1]+'">'+textsplit[i].trim()+'</choice>'+'\n');
+				editor.replaceSelection('<choice label="r'+[i+1]+'" value="'+[i+1]+'">'+textsplit[j].trim()+'</choice>'+'\n');
 				break
 		case 'groupR':
 		    if (textsplit[i]!= '')
-				editor.replaceSelection('<group label="r'+[i+1]+'">'+textsplit[i].trim()+'</group>'+'\n');
+				editor.replaceSelection('<group label="r'+[i+1]+'">'+textsplit[j].trim()+'</group>'+'\n');
 				break
 		case 'groupRV':
 		    if (textsplit[i]!= '')
-				editor.replaceSelection('<group label="r'+[i+1]+'" value="'+[i+1]+'">'+textsplit[i].trim()+'</group>'+'\n');
+				editor.replaceSelection('<group label="r'+[i+1]+'" value="'+[i+1]+'">'+textsplit[j].trim()+'</group>'+'\n');
 				break
 				}
 }
-
+}
 
 }
-	
+
 function questionType(type) {
     var textsplit = editor.getSelection().split('\n');
     switch(type){
