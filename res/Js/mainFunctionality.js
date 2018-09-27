@@ -1,4 +1,4 @@
-function elementType(kind) {
+function elementType(kind) { 
     var textsplit = editor.getSelection().split('\n');
     var matchlabel = [];
     for (var i = 0; i <textsplit.length; i++) {
