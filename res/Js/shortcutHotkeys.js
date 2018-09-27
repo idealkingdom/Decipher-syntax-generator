@@ -7,7 +7,7 @@ function doc_keyUp(e) {
         elementType('row');
     }
 
-    else if (e.ctrlKey && e.shiftKey && e.keyCode == 82) {
+    else if (e.ctrlKey && e.keyCode == 82) {
     	//CTRL + SHIFT + R
         questionType('radio');
         event.preventDefault();
