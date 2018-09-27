@@ -1,17 +1,13 @@
-// $(function () {
-// var isCtrl=false
-// var isAlt =false
-// $(document).bind('keydown',function(e) {
-// 				isCtrl = true
-// 				isAlt = true
-// 				if(isCtrl == true && isAlt == true){
-// 					if(e.keyCode == 49){
-// 						$('#clean').click()
-// 					}
-// 				}
-// });
-// $(document).bind('keyup',function(e) {
-// 				isCtrl = false
-// 				isAlt = false
-// });
-// });
+$(function () {
+var isCtrl=false
+var isAlt =false
+$(document).bind('keydown',function(e) {
+	if (e.ctrlKey && e.which == 66) {
+    	alert("Ctrl + B shortcut combination was pressed");
+    }
+});
+$(document).bind('keyup',function(e) {
+				isCtrl = false
+				isAlt = false
+});
+});
