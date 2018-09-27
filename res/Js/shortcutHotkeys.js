@@ -1,9 +1,7 @@
-$(document).keydown(function(e) {
-    switch(e.which) {
-        case 37: console.log("test");
-        break;
+function doc_keyUp(e) {
 
-        default: return; // exit this handler for other keys
+    if (e.ctrlKey && e.keyCode == 49) {
+        elementType('row')
     }
-    e.preventDefault(); // prevent the default action (scroll / move caret)
-});
+}
+document.addEventListener('keyup', doc_keyUp, false);
