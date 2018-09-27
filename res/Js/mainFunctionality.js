@@ -2,20 +2,20 @@ function elementType(kind) {
     var textsplit = editor.getSelection().split('\n');
     var matchlabel = [];
     for (var i = 0; i <textsplit.length; i++) {
-    	matchlabel.push(textsplit[i].substring(0,textsplit[i].indexOf('.')).replace(/\s/g, ""))
+    	matchlabel.push(textsplit[i].substring(0,textsplit[i].indexOf('.')).replace(/\s/g, "").trim())
     switch(kind){
 		case 'row':
 		    if (textsplit[i]!= '')
-				editor.replaceSelection('<row label="r'+[i+1]+'">'+textsplit[i]+'</row>'+'\n');
+				editor.replaceSelection('<row label="r'+[i+1]+'">'+textsplit[i].trim()+'</row>'+'\n');
 				break
 		case 'rowV':
 		    if (textsplit[i]!= '')
-				editor.replaceSelection('<row label="r'+[i+1]+'" value="'+[i+1]+'">'+textsplit[i]+'</row>'+'\n');
+				editor.replaceSelection('<row label="r'+[i+1]+'" value="'+[i+1]+'">'+textsplit[i].trim()+'</row>'+'\n');
 				break
 		case 'rowMatchv':
 		    if (matchlabel[i]!= ''){
 		    	editor.replaceSelection('<row label="r'+[matchlabel[i]]+'"  value="'+matchlabel[i]+'">'+
-					textsplit[i].slice(textsplit[i].indexOf('.')+1)+'</row>'+'\n');
+					textsplit[i].trim().slice(textsplit[i].indexOf('.')+1)+'</row>'+'\n');
 		    }break
 		case 'col':
 		    if (textsplit[i]!= '')
