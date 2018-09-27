@@ -1,6 +1,6 @@
 function doc_keyUp(e) {
 
-    if (e.ctrlKey && e.keyCode == 49) {
+    if (e.ctrlKey && e.altKey && e.keyCode == 49) {
         elementType('row')
     }
 }
