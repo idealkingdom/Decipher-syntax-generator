@@ -1,4 +1,4 @@
-console.log("Up and running");
+console.log("Again");
 
 function doc_keyUp(e) {
 
@@ -10,6 +10,7 @@ function doc_keyUp(e) {
     else if (e.ctrlKey && e.shiftKey && e.keyCode == 82) {
     	//CTRL + SHIFT + R
         questionType('radio');
+        event.preventDefault();
     }
 
 
