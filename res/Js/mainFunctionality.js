@@ -6,160 +6,161 @@ function elementType(kind) {
     switch(kind){
 		case 'row':
 		    if (textsplit[i]!= '')
-				editor.replaceSelection('<row label="r'+[i+1]+'">'+textsplit[i].trim()+'</row>'+'\n');
+				editor.replaceSelection('\t<row label="r'+[i+1]+'">'+textsplit[i].trim()+'</row>'+'\n');
 				break
 		case 'rowV':
 		    if (textsplit[i]!= '')
-				editor.replaceSelection('<row label="r'+[i+1]+'" value="'+[i+1]+'">'+textsplit[i].trim()+'</row>'+'\n');
+				editor.replaceSelection('\t<row label="r'+[i+1]+'" value="'+[i+1]+'">'+textsplit[i].trim()+'</row>'+'\n');
 				break
 		case 'rowMatchv':
 		    if (matchlabel[i]!= ''){
-		    	editor.replaceSelection('<row label="r'+[matchlabel[i]]+'"  value="'+matchlabel[i]+'">'+
+		    	editor.replaceSelection('\t<row label="r'+[matchlabel[i]]+'"  value="'+matchlabel[i]+'">'+
 					textsplit[i].slice(textsplit[i].indexOf('.')+1).trim()+'</row>'+'\n');
 		    }break
 		case 'col':
 		    if (textsplit[i]!= '')
-				editor.replaceSelection('<col label="r'+[i+1]+'">'+textsplit[i].trim()+'</col>'+'\n');
+				editor.replaceSelection('\t<col label="r'+[i+1]+'">'+textsplit[i].trim()+'</col>'+'\n');
 				break
 		case 'colV':
 		    if (textsplit[i]!= '')
-				editor.replaceSelection('<col label="r'+[i+1]+'" value="'+[i+1]+'">'+textsplit[i].trim()+'</col>'+'\n');
+				editor.replaceSelection('\t<col label="r'+[i+1]+'" value="'+[i+1]+'">'+textsplit[i].trim()+'</col>'+'\n');
 				break
 		case 'colMatchv':
 		    if (matchlabel[i]!= ''){
-		    	editor.replaceSelection('<col label="r'+[matchlabel[i]]+'"  value="'+matchlabel[i]+'">'+
+		    	editor.replaceSelection('\t<col label="r'+[matchlabel[i]]+'"  value="'+matchlabel[i]+'">'+
 					textsplit[i].slice(textsplit[i].indexOf('.')+1).trim()+'</col>'+'\n');
 		    }break
 		case 'choice':
 		    if (textsplit[i]!= '')
-				editor.replaceSelection('<choice label="r'+[i+1]+'">'+textsplit[i].trim()+'</choice>'+'\n');
+				editor.replaceSelection('\t<choice label="r'+[i+1]+'">'+textsplit[i].trim()+'</choice>'+'\n');
 				break
 		case 'choiceV':
 		    if (textsplit[i]!= '')
-				editor.replaceSelection('<choice label="r'+[i+1]+'" value="'+[i+1]+'">'+textsplit[i].trim()+'</choice>'+'\n');
+				editor.replaceSelection('\t<choice label="r'+[i+1]+'" value="'+[i+1]+'">'+textsplit[i].trim()+'</choice>'+'\n');
 				break
 		case 'choiceMatchv':
 		    if (matchlabel[i]!= ''){
-		    	editor.replaceSelection('<choice label="r'+[matchlabel[i]]+'"  value="'+matchlabel[i]+'">'+
+		    	editor.replaceSelection('\t<choice label="r'+[matchlabel[i]]+'"  value="'+matchlabel[i]+'">'+
 					textsplit[i].slice(textsplit[i].indexOf('.')+1).trim()+'</choice>'+'\n');
 		    }break
 		case 'group':
 		    if (textsplit[i]!= '')
-				editor.replaceSelection('<group label="r'+[i+1]+'">'+textsplit[i].trim()+'</group>'+'\n');
+				editor.replaceSelection('\t<group label="r'+[i+1]+'">'+textsplit[i].trim()+'</group>'+'\n');
 				break
 		case 'groupV':
 		    if (textsplit[i]!= '')
-				editor.replaceSelection('<group label="r'+[i+1]+'" value="'+[i+1]+'">'+textsplit[i].trim()+'</group>'+'\n');
+				editor.replaceSelection('\t<group label="r'+[i+1]+'" value="'+[i+1]+'">'+textsplit[i].trim()+'</group>'+'\n');
 				break
 		case 'groupMatchv':
 		    if (matchlabel[i]!= ''){
-		    	editor.replaceSelection('<group label="r'+[matchlabel[i]]+'"  value="'+matchlabel[i]+'">'+
+		    	editor.replaceSelection('\t<group label="r'+[matchlabel[i]]+'"  value="'+matchlabel[i]+'">'+
 					textsplit[i].slice(textsplit[i].indexOf('.')+1).trim()+'</group>'+'\n');
 		    }break
 				}
 
 }
-for (var j = 0; j < textsplit.length; j++) {
+var reverse = 0
 	for (var i = textsplit.length - 1; i >= 0; i--) {
 		    	matchlabel.push(textsplit[i].trim().substring(0,textsplit[i].indexOf('.')).replace(/\s/g, ""))
     switch(kind){
 		case 'rowR':
 		    if (textsplit[i]!= '')
-				editor.replaceSelection('<row label="r'+[i+1]+'">'+textsplit[j].trim()+'</row>'+'\n');
+				editor.replaceSelection('\t<row label="r'+[i+1]+'">'+textsplit[reverse].trim()+'</row>'+'\n');
 				break
 		case 'rowRV':
 		    if (textsplit[i]!= '')
-				editor.replaceSelection('<row label="r'+[i+1]+'" value="'+[i+1]+'">'+textsplit[j].trim()+'</row>'+'\n');
+				editor.replaceSelection('\t<row label="r'+[i+1]+'" value="'+[i+1]+'">'+textsplit[reverse].trim()+'</row>'+'\n');
 				break
 		case 'colR':
 		    if (textsplit[i]!= '')
-				editor.replaceSelection('<col label="r'+[i+1]+'">'+textsplit[j].trim()+'</col>'+'\n');
+				editor.replaceSelection('\t<col label="r'+[i+1]+'">'+textsplit[reverse].trim()+'</col>'+'\n');
 				break
 		case 'colRV':
 		    if (textsplit[i]!= '')
-				editor.replaceSelection('<col label="r'+[i+1]+'" value="'+[i+1]+'">'+textsplit[j].trim()+'</col>'+'\n');
+				editor.replaceSelection('\t<col label="r'+[i+1]+'" value="'+[i+1]+'">'+textsplit[reverse].trim()+'</col>'+'\n');
 				break
 		case 'choiceR':
 		    if (textsplit[i]!= '')
-				editor.replaceSelection('<choice label="r'+[i+1]+'">'+textsplit[j].trim()+'</choice>'+'\n');
+				editor.replaceSelection('\t<choice label="r'+[i+1]+'">'+textsplit[reverse].trim()+'</choice>'+'\n');
 				break
 		case 'choiceRV':
 		    if (textsplit[i]!= '')
-				editor.replaceSelection('<choice label="r'+[i+1]+'" value="'+[i+1]+'">'+textsplit[j].trim()+'</choice>'+'\n');
+				editor.replaceSelection('\t<choice label="r'+[i+1]+'" value="'+[i+1]+'">'+textsplit[reverse].trim()+'</choice>'+'\n');
 				break
 		case 'groupR':
 		    if (textsplit[i]!= '')
-				editor.replaceSelection('<group label="r'+[i+1]+'">'+textsplit[j].trim()+'</group>'+'\n');
+				editor.replaceSelection('\t<group label="r'+[i+1]+'">'+textsplit[reverse].trim()+'</group>'+'\n');
 				break
 		case 'groupRV':
 		    if (textsplit[i]!= '')
-				editor.replaceSelection('<group label="r'+[i+1]+'" value="'+[i+1]+'">'+textsplit[j].trim()+'</group>'+'\n');
+				editor.replaceSelection('\t<group label="r'+[i+1]+'" value="'+[i+1]+'">'+textsplit[reverse].trim()+'</group>'+'\n');
 				break
 				}
+		reverse++
 }
 }
 
-}
+
 
 function questionType(type) {
     var textsplit = editor.getSelection().split('\n');
     switch(type){
     	case 'radio':
     				console.log($('.openFile')[0].path)
-    	    		editor.replaceSelection('<radio \n   label=""\n   optional="0">\n'+
-    	    			(textsplit[0].search(/<row/) > -1 ? '<title></title>'+
+    	    		editor.replaceSelection('<radio \n   label="'+textsplit[0].split(" ")[0]+'"\n   optional="0">\n'+
+    	    			(textsplit[1].search(/<row/) > -1 ? '<title></title>'+
     	    			'\n<comment>Select one</comment>\n'+textsplit.join("\n").trim() : 
-    	    			'<title>'+textsplit[0].trim()+'</title>\n<comment>Select one</comment>\n'+textsplit.slice(1).join("\n"))+
-    	    			'</radio>');
+    	    			'<title>'+textsplit[1].trim()+'</title>\n<comment>Select one</comment>\n'+textsplit.slice(1).join("\n"))+
+    	    			'\n</radio>');
     	    		break
     	case 'radioR':
     	    		editor.replaceSelection('<radio \n   label=""\n   optional="0"\n   type="rating">\n'+
     	    			(textsplit[0].search(/<row/) > -1 ? '<title></title>'+
     	    			'\n<comment>Select one</comment>\n'+textsplit.join("\n").trim() : 
     	    			'<title>'+textsplit[0].trim()+'</title>\n<comment>Select one</comment>\n'+textsplit.slice(1).join("\n"))+
-    	    			'</radio>');
+    	    			'\n</radio>');
     	    		break
     	case 'checkbox':
     	    		editor.replaceSelection('<checkbox \n   label=""\n   atleast="1">\n'+
     	    			(textsplit[0].search(/<row/) > -1 ? '<title></title>'+
     	    			'\n<comment>Select all that apply</comment>\n'+textsplit.join("\n").trim() : 
     	    			'<title>'+textsplit[0].trim()+'</title>\n<comment>Select all that apply</comment>\n'+textsplit.slice(1).join("\n"))+
-    	    			'</checkbox>');
+    	    			'\n</checkbox>');
     	    		break
     	case 'select':
     	    		editor.replaceSelection('<select \n   label=""\n   optional="0">\n'+
     	    			(textsplit[0].search(/<row/) > -1 ? '<title></title>'+
     	    			'\n<comment>Select one</comment>\n'+textsplit.join("\n").trim() : 
     	    			'<title>'+textsplit[0].trim()+'</title>\n<comment>Select one</comment>\n'+textsplit.slice(1).join("\n").trim())+
-    	    			'</select>');
+    	    			'\n</select>');
     	    		break
     	case 'selectR':
     	    		editor.replaceSelection('<select \n   label=""\n   optional="0"\n type="rating">\n'+
     	    			(textsplit[0].search(/<row/) > -1 ? '<title></title>'+
     	    			'\n<comment>Select one</comment>\n'+textsplit.join("\n").trim() : 
     	    			'<title>'+textsplit[0].trim()+'</title>\n<comment>Select one</comment>\n'+textsplit.slice(1).join("\n").trim())+
-    	    			'</select>');
+    	    			'\n</select>');
     	    		break
     	case 'number':
     	    		editor.replaceSelection('<number \n   label=""\n  size="9"\n optional="0"\n verify="range(1,120)">\n'+
     	    			(textsplit[0].search(/<row/) > -1 ? '<title></title>'+
     	    			'\n<comment>Please enter a whole number</comment>\n'+textsplit.join("\n").trim() : 
     	    			'<title>'+textsplit[0].trim()+'</title>\n<comment>Please enter a whole number</comment>\n'+textsplit.slice(1).join("\n").trim())+
-    	    			'</number>');
+    	    			'\n</number>');
     	    		break
     	case 'text':
     	    		editor.replaceSelection('<text \n   label=""\n  size="40"\n optional="0">\n'+
     	    			(textsplit[0].search(/<row/) > -1 ? '<title></title>'+
     	    			'\n<comment>Select one</comment>\n'+textsplit.join("\n").trim() : 
     	    			'<title>'+textsplit[0].trim()+'</title>\n<comment>Please be as specific as possible</comment>\n'+textsplit.slice(1).join("\n").trim())+
-    	    			' </text>');
+    	    			'\n</text>');
     	    		break
     	case 'textarea':
     	    		editor.replaceSelection('<textarea \n   label=""\n  optional="0">\n'+
     	    			(textsplit[0].search(/<row/) > -1 ? '<title></title>'+
     	    			'\n<comment>Select one</comment>\n'+textsplit.join("\n").trim() : 
     	    			'<title>'+textsplit[0].trim()+'</title>\n<comment>Please be as specific as possible</comment>\n'+textsplit.slice(1).join("\n").trim())+
-    	    			'</textarea>');
+    	    			'\n</textarea>');
     	    		break
     	case 'comment':
     	    		editor.replaceSelection('<html \n   label="cm"\n   where="survey">\n'+
