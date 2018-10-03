@@ -107,10 +107,10 @@ function questionType(type) {
     switch(type){
     	case 'radio':
     				console.log($('.openFile')[0].path)
-    	    		editor.replaceSelection('<radio \n   label="'+textsplit[0].split(" ")[0]+'"\n   optional="0">\n'+
-    	    			(textsplit[1].search(/<row/) > -1 ? '<title></title>'+
+    	    		editor.replaceSelection('<radio \n   label=""\n   optional="0">\n'+
+    	    			(textsplit[0].search(/<row/) > -1 ? '<title></title>'+
     	    			'\n<comment>Select one</comment>\n'+textsplit.join("\n").trim() : 
-    	    			'<title>'+textsplit[1].trim()+'</title>\n<comment>Select one</comment>\n'+textsplit.slice(1).join("\n"))+
+    	    			'<title>'+textsplit[0].trim()+'</title>\n<comment>Select one</comment>\n'+textsplit.slice(1).join("\n"))+
     	    			'\n</radio>');
     	    		break
     	case 'radioR':
